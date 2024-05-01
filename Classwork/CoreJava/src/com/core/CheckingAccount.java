@@ -1,0 +1,34 @@
+package com.core;
+
+public class CheckingAccount {
+	int acno;
+	double balance;
+	String cname;
+	
+	public CheckingAccount(int acno, double balance, String cname) {
+		this.acno = acno;
+		this.balance = balance;
+		this.cname = cname;
+		
+		System.out.println("Hello" +cname + "your account number " +acno +"is opened with "+ balance+" Rs.");		
+	}
+	
+	void deposit(double amount) {
+		this.balance+= amount;
+	}
+	
+	void withdraw(double amount) throws InsufficientFunds{
+		
+		if(amount < this.balance) {
+			this.balance-=amount;
+			
+		}
+		else {
+			throw new InsufficientFunds(amount-this.balance);
+		}
+	}
+	void checkBalance() {
+		System.out.println("Current Balance : "+ this.balance);
+	}
+	
+}

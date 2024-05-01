@@ -1,0 +1,49 @@
+package com.core;
+import java.util.Scanner;
+
+public class Bank {
+	public static void main(String args[]) {
+		CheckingAccount c = new CheckingAccount(101, 1000, "Meet");
+		double amount;
+		int choice;
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("*****************************************************");
+		System.out.println("1. Deposit");
+		System.out.println("2. Withraw");
+		System.out.println("3. Check Balance");
+		System.out.println("4. Exit");
+		System.out.println("*****************************************************");
+		System.out.println("Enter Your Choice : ");
+		choice = sc.nextInt();
+		System.out.println("*****************************************************");
+		
+		System.out.println("*****************************************************");
+		System.out.println("*****************************************************");
+		
+		
+		switch(choice){
+		case 1:
+			System.out.println("Enter Deposit Ammount : ");
+			amount = sc.nextDouble();
+			c.deposit(amount);
+			System.out.println("*****************************************************");
+			break;
+			
+		case 2:
+			System.out.println("Enter Withrawale ammount : ");
+			amount = sc.nextDouble();
+			try {
+				c.withdraw(amount);
+			}
+			catch(InsufficientFunds e) {
+				System.out.rintln("Soory you need another "+ )
+				
+			}
+			System.out.println("*****************************************************");			
+			break;
+			
+		case 3:	
+		}
+	}
+}
