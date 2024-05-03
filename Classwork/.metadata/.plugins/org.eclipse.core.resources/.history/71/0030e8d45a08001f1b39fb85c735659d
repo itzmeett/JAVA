@@ -1,0 +1,15 @@
+package com.file;
+import java.io.FileInputStream;
+
+public class FileInputStreamDemo {
+	public static void main(String args[]) {
+		try {
+			FileInputStream fis = new FileInputStream("E:/TOPS_MATERIAL/Topic_of_Lecture.txt");
+			int s = fis.read();
+			System.out.print((char)s);
+			fis.close();
+		}catch(Exception e){
+			System.out.println(e);
+		}
+	}
+}
