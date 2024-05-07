@@ -20,18 +20,18 @@ public class BufferedIOstream {
 			System.out.println(e);
 		}
 		
-//		try {
-//			System.out.println("___________________________________________\n");
-//			FileInputStream fist = new FileInputStream("BufferedFile.txt");
-//			BufferedInputStream bist = new BufferedInputStream(fist);
-//			int character;
-//			while((character = bist.read())!=-1) {
-//				System.out.print((char)character);
-//			}
-//			System.out.println("\nFile Successfully Readed");
-//			bist.close();
-//		}catch(Exception e){
-//			System.out.println(e);	
-//		}
+		try {
+			System.out.println("___________________________________________\n");
+			FileInputStream fist = new FileInputStream("BufferedFile.txt");
+			BufferedInputStream bist = new BufferedInputStream(fist);
+			int character;
+			while((character = bist.read())!=-1) {
+				System.out.print((char)character);
+			}
+			System.out.println("\nFile Successfully Readed");
+			bist.close();
+		}catch(Exception e){
+			System.out.println(e);	
+		}
 	}
 }

@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-public class ComparatorDemo implemets Comparator<Emp> {
+public class ComparatorDemo implements Comparator<Emp> {
 	public int compare(Emp e1, Emp e2) {
 		int value = 0;
 		if(e1.getSalary()>e2.getSalary()) {

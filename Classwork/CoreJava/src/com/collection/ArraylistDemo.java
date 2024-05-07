@@ -1,5 +1,4 @@
 package com.collection;
-
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.ListIterator;
@@ -30,17 +29,17 @@ public class ArraylistDemo {
 		ListIterator litr = a1.listIterator();
 		
 		while(litr.hasNext()) {
-			litr.set(litr.next() + "TOPS");
+			System.out.println(litr.next() + " TOPS");
 		}
 		
 		while(litr.hasNext()) {
-			litr.set(litr.next());
+			System.out.println(litr.next());
 		}
 		
 		System.out.println("-----------------List Iterator Reverse-----------------");
 
 		while(litr.hasNext()) {
-			litr.set(litr.previous());
+			System.out.println(litr.previous());
 		}
 		
 	}
