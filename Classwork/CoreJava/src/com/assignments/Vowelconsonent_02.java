@@ -7,7 +7,7 @@ class checkChar{
 		
 	Scanner sc = new Scanner(System.in);
 	
-	System.out.println("Enter a Charater : ");
+	System.out.print("Enter a Charater : ");
 	String str = sc.nextLine();
 	int size = str.length();
 	char chr = Character.toLowerCase(str.charAt(0));

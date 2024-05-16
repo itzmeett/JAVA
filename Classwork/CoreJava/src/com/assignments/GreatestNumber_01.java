@@ -6,25 +6,25 @@ class Maxnum{
 		
 	float n1, n2, n3;
 	
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter Number-1 : ");
-		n1 = sc.nextFloat();
+		try (Scanner sc = new Scanner(System.in)) {
+			System.out.print("Enter Number-1 : ");
+			n1 = sc.nextFloat();
 
-		System.out.println("Enter Number-2 : ");
-		n2 = sc.nextFloat();
-		
-		System.out.println("Enter Number-3 : ");
-		n3 = sc.nextFloat();
+			System.out.print("\nEnter Number-2 : ");
+			n2 = sc.nextFloat();
 			
-			if(n1>n2 || n1>n3) {
-				System.out.println(n1 +" is Greatest Number");
+			System.out.print("\nEnter Number-3 : ");
+			n3 = sc.nextFloat();
+		}
+		if(n1>n2 || n1>n3) {
+				System.out.print("\n"+ n1 +" is Greatest Number");
 			}
 			else if(n2>n1 || n2>n3) {
-				System.out.println(n2 + "is Greatest Number");
+				System.out.print("\n"+ n2 + "is Greatest Number");
 			}else if(n3>n1 || n3>n2) {
-				System.out.println(n3 + "is Greatest Number");
+				System.out.print("\n"+ n3 + "is Greatest Number");
 			}else {
-				System.out.println("Error");
+				System.out.print("\nError");
 			}	
 		}
 	}
