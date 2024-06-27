@@ -22,7 +22,7 @@
 		var reg = /^[A-Za-z]+$/;
 		if(f == ""){
 			document.getElementById("lnameError").innerHTML = "Please Enter Your Last Name";
-		}else if(!reg.test(l)){
+		}else if(!reg.test(f)){
 			document.getElementById("lnameError").innerHTML = "Please Enter a Valid Last Name";
 		}else{
 			document.getElementById("lnameError").innerHTML = "";
@@ -30,10 +30,10 @@
 	}
 	function checkEmail(){
 		var f = document.insert.email.value;
-		var reg = /^[A-Za-z0-9-_.]+@[A-Za-z]+\.[A-Za-z]{2,4}$/;
+		var reg = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
 		if(f == ""){
 			document.getElementById("emailError").innerHTML = "Please Enter Email";
-		}else if(!reg.test(l)){
+		}else if(!reg.test(f)){
 			document.getElementById("emailError").innerHTML = "Please Enter a Valid Email";
 		}else{
 			document.getElementById("emailError").innerHTML = "";
@@ -44,7 +44,7 @@
 		var reg = /^\d{10}$/;
 		if(f == ""){
 			document.getElementById("mobileError").innerHTML = "Please Enter Mobile Number";
-		}else if(!reg.test(l)){
+		}else if(!reg.test(f)){
 			document.getElementById("mobileError").innerHTML = "Please Enter a 10 digit Number";
 		}else{
 			document.getElementById("mobileError").innerHTML = "";
@@ -52,10 +52,10 @@
 	}
 	function checkPassword(){
 		var f = document.insert.password.value;
-		var reg = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$./;
+		var reg = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
 		if(f == ""){
 			document.getElementById("passwordError").innerHTML = "Please Enter Password";
-		}else if(!reg.test(l)){
+		}else if(!reg.test(f)){
 			document.getElementById("passwordError").innerHTML = "Please Enter a minimum 1 upper, lower, number & special character(8-15)";
 		}else{
 			document.getElementById("passwordError").innerHTML = "";
@@ -64,11 +64,11 @@
 	function checkCPassword(){
 		var p1 = document.insert.password.value;
 		var p2 = document.insert.cpassword.value;
-		if(p1 != p2){
-			document.getElementById("cPasswordError").innerHTML = "Please Enter Confirm Password";
-		}else if(!reg.test(l)){
-			document.getElementById("cpasswordError").innerHTML = "Password & Confirm Password does not match";
-		}else{
+		if(p1 == ""){
+			document.getElementById("cPasswordError").innerHTML = "Please Enter Password First";
+		} else if(p1 != p2){
+			document.getElementById("cPasswordError").innerHTML = "Password & Confirm Password do not match";
+		} else {
 			document.getElementById("cPasswordError").innerHTML = "";
 		}
 	}
@@ -116,7 +116,7 @@
 					<option value="10th">10th</option>
 					<option value="12th">12th</option>
 					<option value="BE">BE</option>
-					<option value="ME">Me</option>
+					<option value="ME">ME</option>
 					<option value="BCA">BCA</option>
 					<option value="MCA">MCA</option>
 					<option value="B.TECH">B.TECH</option>
