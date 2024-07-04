@@ -8,7 +8,7 @@
 </head>
 <body>
 <table>
-	<form name="insert" method="post" action="" >
+	<form name="frm" method="post" action="StudentController" >
 		<tr> 
 			<td><label>First Name:</label></td>
 			<td><input type="text" name="fname"></td>
@@ -26,7 +26,7 @@
 			<td><input type="number" name="mobile"></td>
 		</tr>
 		<tr colspan="2">
-			<td><input type="submit" name="btn" value="SUBMIT"></td>
+			<td><input type="submit" name="action" value="Insert"></td>
 		</tr>	
 	</form>
 </table>
