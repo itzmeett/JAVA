@@ -42,4 +42,43 @@ public class UserDao {
 		}
 		return flag;
 	}
+	public static User loginUser(String email) {
+		User u = null;
+		try {
+			Connection conn = UserUtil.createConnection();
+			String sql = "select * from user where email=?";
+			PreparedStatement pst=conn.prepareStatement(sql);
+			pst.setString(1, email);
+			ResultSet rs=pst.executeQuery();
+			if(rs.next()) {
+				u= new User();
+				u.setUid(rs.getInt("id"));
+				u.setFname(rs.getString("fname"));
+				u.setLname(rs.getString("lname"));
+				u.setEmail(rs.getString("email"));
+				u.setGender(rs.getString("gender"));
+				u.setPassword(rs.getString("password"));
+				u.setPhone(rs.getLong("phone"));
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return u;
+	}
+	
+	public static void changePassword(String email, String password) {
+		try {
+			Connection conn = UserUtil.createConnection();
+			String sql = "update user set password=? where email=?";
+			PreparedStatement pst = conn.prepareStatement(sql);
+			pst.setString(1, password);
+			pst.setString(2, email);
+			pst.executeUpdate();
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }
