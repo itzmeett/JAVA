@@ -24,6 +24,7 @@ public class UserController extends HttpServlet {
 				if(request.getParameter("password").equals(request.getParameter("cpassword")))
 				{
 					User u = new User();
+					u.setUsertype(request.getParameter("usertype"));
 					u.setFname(request.getParameter("fname"));
 					u.setLname(request.getParameter("lname"));
 					u.setEmail(request.getParameter("email"));
@@ -53,7 +54,14 @@ public class UserController extends HttpServlet {
 					if(userPassword != null && userPassword.equals(inputPassword)) {
 						HttpSession session = request.getSession();
 						session.setAttribute("u", u);
-						request.getRequestDispatcher("index.jsp").forward(request, response);
+						if(u.getUsertype().equals("buyer"))
+						{
+							request.getRequestDispatcher("index.jsp").forward(request, response);
+						}
+						else
+						{
+							request.getRequestDispatcher("seller-index.jsp").forward(request, response);
+						}
 					}
 					else {
 						request.setAttribute("msg", "Password Incorrect");
@@ -93,6 +101,19 @@ public class UserController extends HttpServlet {
 				request.setAttribute("msg", "Old Password does not matched");
 				request.getRequestDispatcher("changePassword.jsp").forward(request, response);
 			}
+		}
+		else if(action.equalsIgnoreCase("update profile"))
+		{
+			HttpSession session = request.getSession();
+			User u = (User)session.getAttribute("u");
+			u.setFname(request.getParameter("fname"));
+			u.setLname(request.getParameter("lname"));
+			u.setEmail(request.getParameter("email"));
+			u.setMobile(Long.parseLong(request.getParameter("mobile")));
+			u.setAddress(request.getParameter("address"));
+			UserDao.updateProfile(u);
+			session.setAttribute("u", u);
+			response.sendRedirect("index.jsp");
 		}
 		
 	}

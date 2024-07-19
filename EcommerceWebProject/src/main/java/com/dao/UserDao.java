@@ -12,7 +12,7 @@ public class UserDao {
 	public static void registerUser(User u) {
 		try {
 			Connection conn=DButil.createConnection();
-			String sql = "insert into webuser(fname, lname, email, address, mobile, password) value(?,?,?,?,?,?)";
+			String sql = "insert into webuser(fname, lname, email, address, mobile, password, usertype) value(?,?,?,?,?,?,?)";
 			PreparedStatement pst = conn.prepareStatement(sql);
 			pst.setString(1, u.getFname());
 			pst.setString(2, u.getLname());
@@ -20,6 +20,7 @@ public class UserDao {
 			pst.setString(4, u.getAddress());
 			pst.setLong(5, u.getMobile());
 			pst.setString(6, u.getPassword());
+			pst.setString(7, u.getUsertype());
 			pst.executeUpdate();
 			
 		} catch (Exception e) {
@@ -64,6 +65,7 @@ public class UserDao {
 				u.setAddress(rs.getString("address"));
 				u.setMobile(rs.getLong("mobile"));
 				u.setPassword(rs.getString("password"));
+				u.setUsertype(rs.getString("usertype"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -80,6 +82,23 @@ public class UserDao {
 			PreparedStatement pst=conn.prepareStatement(sql);
 			pst.setString(1, Password);
 			pst.setString(2, email);
+			pst.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void updateProfile(User u)
+	{
+		try {
+			Connection conn=DButil.createConnection();
+			String sql = "update webuser set fname=?, lname=?, mobile=?, address=? where email=?";
+			PreparedStatement pst=conn.prepareStatement(sql);
+			pst.setString(1, u.getFname());
+			pst.setString(2, u.getLname());
+			pst.setLong(3, u.getMobile());
+			pst.setString(4, u.getAddress());
+			pst.setString(5, u.getEmail());
 			pst.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();

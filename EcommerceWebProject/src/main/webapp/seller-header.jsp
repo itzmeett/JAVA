@@ -86,35 +86,18 @@
                                           <span class="icon-bar"></span>
                                           <span class="icon-bar"></span>
                                       </button>
-                                      <a class="navbar-brand" href="index.jsp"><img src="images/logo.png" alt=""></a>
+                                      <a class="navbar-brand" href="seller-index.jsp"><img src="images/logo.png" alt=""></a>
                                   </div>
 
                                   <!-- Collect the nav links, forms, and other content for toggling -->
                                   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                                       <ul class="nav navbar-nav">
-                                          <li class="active"><a href="index.jsp">Home <span class="sr-only">(current)</span></a></li>
-                                          <li><a href="blog.jsp">Blog</a></li>
-                                          <li><a href="blog-detail.jsp">Blog Post</a></li>
+                                          <li class="active"><a href="seller-index.jsp">Home <span class="sr-only">(current)</span></a></li>
+                                          <li><a href="seller-add-product.jsp">Add Product</a></li>
+                                          <li><a href="blog-detail.jsp">View Product</a></li>
                                           <li><a href="contact.jsp">Contact</a></li>
                                       </ul>
                                      
-                                      <ul class="nav navbar-nav navbar-right">
-                                          <li class="menu-search-form">
-                                              <a href="#" id="open-srch-form"><img src="images/srch.png" alt="srch"></a>
-                                          </li>
-                                          <li><a href="#"><img src="images/pav.png" alt="pav"><span>2</span></a></li>
-                                          <li><a href="#"><img src="images/bag.png" alt="bag"><span>2</span></a></li>
-                                          <li id="open-srch-form-mod">
-                                              <div>
-                                                  <form class="side-search">
-                                                      <div class="input-group">
-                                                          <input type="text" class="form-control search-wid" placeholder="Search Here" aria-describedby="basic-addon1">
-                                                          <a href="" class="input-group-addon btn-side-serach" id="basic-addon1"><i class="fa fa-search"></i></a>
-                                                      </div>
-                                                  </form>
-                                              </div>
-                                          </li>
-                                      </ul>
                                      
                                   </div><!-- /.navbar-collapse -->
                               <!--</div> -->

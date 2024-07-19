@@ -66,6 +66,17 @@
                                       <label for="cf_subject">Confirm Password*</label>
                                       <input type="password" class="form-control" name="cpassword" id="cf_subject" placeholder="">
                                   </div>
+                                  
+                                  <div class="form-group">
+                                      <label for="cf_subject">User Type*</label>
+                                  	  <select name="usertype" class="form-control">
+                                  	  	<option>---Select User Type---</option>
+                                  	  	<option>Buyer</option>
+                                  	  	<option>Seller</option>
+                                  	  </select>
+                                  </div>
+                                  
+                                  
 
                                   <button type="submit" name="action" value="register" class="btn btn-blue">Register</button>
                               </form>

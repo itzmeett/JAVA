@@ -19,13 +19,12 @@
 <%@include file="seller-header.jsp" %>  
 <%
 	}
-%>  
-
+%>     
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Change Password</title>
+<title>Profile</title>
 </head>
 <body>
  <div id="wrapper" class="homepage-1"> <!-- wrapper -->
@@ -33,8 +32,8 @@
               <div class="page-title">
                   <div class="container">
                       <div class="page-title-inner">
-                          <h3>Change Password</h3>
-                          <div class="breadcumb"> <a href="">Home</a><span> / </span><span>Change Password</span></div>
+                          <h3>Profile</h3>
+                          <div class="breadcumb"> <a href="">Home</a><span> / </span><span>Profile</span></div>
                           <div class="clearfix"></div>
                       </div>
                   </div>
@@ -43,33 +42,41 @@
                   <div class="container">
                       <div class="row">
                           <div class="col-md-8 ct-form">
-                              <h3>Change Password</h3>
-                               <strong style="color:blue; font-size:14px;" >
+                              <h3>Edit Profile</h3>
+                              <strong style="color:blue; font-size:14px;" >
                               <%
                               	if(request.getAttribute("msg")!=null){
                               		 out.print(request.getAttribute("msg"));
                               	}
                               %>
                               </strong>
-                              <br>
-                              <br>
                               <form class="contact-form" action="UserController" method="post">
-
-
                                   <div class="form-group">
-                                      <label for="cf_subject">Old Password*</label>
-                                      <input type="password" class="form-control" name="old_password" id="cf_subject" >
-                                  </div>
-                                  <div class="form-group">
-                                      <label for="cf_subject">New Password*</label>
-                                      <input type="password" class="form-control" name="new_password" id="cf_subject" >
-                                  </div>
-                                  <div class="form-group">
-                                      <label for="cf_subject">Confirm New Password*</label>
-                                      <input type="password" class="form-control" name="cnew_password" id="cf_subject" >
+                                      <label for="cf_name">First Name*</label>
+                                      <input type="text" class="form-control" name="fname" id="cf_name" value="<%=u1.getFname()%>">
                                   </div>
                                   
-                                  <button type="submit" name="action" value="Change Password" class="btn btn-blue">Change Password</button>
+                                  <div class="form-group">
+                                      <label for="cf_name">Last Name*</label>
+                                      <input type="text" class="form-control" name="lname" id="cf_name" value="<%=u1.getLname()%>">
+                                  </div>
+
+                                  <div class="form-group">
+                                      <label for="cf_email">Your E-mail*</label>
+                                      <input type="email" class="form-control" name="email" id="cf_email" value="<%=u1.getEmail()%>" readonly>
+                                  </div>
+
+                                  <div class="form-group">
+                                      <label for="cf_subject">Mobile*</label>
+                                      <input type="text" class="form-control" name="mobile" id="cf_subject" value="<%=u1.getMobile()%>">
+                                  </div>
+
+                                  <div class="form-group">
+                                      <label for="cf_message">Address*</label>
+                                      <textarea type="text" class="form-control" name="address" id="cf_message"><%=u1.getAddress()%></textarea>
+                                  </div>
+                                  
+                                  <button type="submit" name="action" value="update profile" class="btn btn-blue">Update Profile</button>
                               </form>
                           </div>
                       </div>
