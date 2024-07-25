@@ -40,7 +40,6 @@
                       
                       </div>
                       <div class="top-control">
-                          <a href="">Track Order</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                           <%
                           	if(u!=null)
                           	{

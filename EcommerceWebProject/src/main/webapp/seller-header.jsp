@@ -40,7 +40,6 @@
                       
                       </div>
                       <div class="top-control">
-                          <a href="">Track Order</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                           <%
                           	if(u!=null)
                           	{
@@ -93,8 +92,8 @@
                                   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                                       <ul class="nav navbar-nav">
                                           <li class="active"><a href="seller-index.jsp">Home <span class="sr-only">(current)</span></a></li>
-                                          <li><a href="seller-add-product.jsp">Add Product</a></li>
-                                          <li><a href="blog-detail.jsp">View Product</a></li>
+                                          <li><a href="seller-product-add.jsp">Add Product</a></li>
+                                          <li><a href="seller-product-view.jsp">View Product</a></li>
                                           <li><a href="contact.jsp">Contact</a></li>
                                       </ul>
                                      
