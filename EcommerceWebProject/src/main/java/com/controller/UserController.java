@@ -1,9 +1,12 @@
 package com.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import com.bean.User;
+import com.bean.Wishlist;
 import com.dao.UserDao;
+import com.dao.WishlistDao;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -52,8 +55,11 @@ public class UserController extends HttpServlet {
 				String userPassword = u.getPassword();
                 String inputPassword = request.getParameter("password");
 					if(userPassword != null && userPassword.equals(inputPassword)) {
+						List<Wishlist> list = WishlistDao.getWishlistByUser(u.getUid());
+						
 						HttpSession session = request.getSession();
 						session.setAttribute("u", u);
+						session.setAttribute("wishlist_count", list.size());
 						if(u.getUsertype().equals("buyer"))
 						{
 							request.getRequestDispatcher("index.jsp").forward(request, response);

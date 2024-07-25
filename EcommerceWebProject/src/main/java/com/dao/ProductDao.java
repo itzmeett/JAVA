@@ -111,4 +111,32 @@ public static void deleteProduct(int pid) {
 		e.printStackTrace();
 	}
 }
+
+public static List<Product> getAllProduct()
+{
+	List<Product> list = new ArrayList<Product>();
+	try {
+		Connection conn = DButil.createConnection();
+		String sql = "select * from webproduct";
+		PreparedStatement pst = conn.prepareStatement(sql);
+		ResultSet rs = pst.executeQuery();
+		while(rs.next())
+		{
+			Product p = new Product();
+			p.setPid(rs.getInt("pid"));
+			p.setProduct_category(rs.getString("product_category"));
+			p.setProduct_name(rs.getString("product_name"));
+			p.setProduct_image(rs.getString("product_image"));
+			p.setProduct_desc(rs.getString("product_desc"));
+			p.setProduct_price(rs.getInt("product_price"));
+			p.setUid(rs.getInt("uid"));
+			list.add(p);
+		}
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+	return list;
+}
+
+
 }

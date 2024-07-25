@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="seller-header.jsp" %>  
+<%@ include file="header.jsp" %>  
 <%@ page import="java.util.List" %>
+<%@ page import="com.bean.Wishlist" %>
 <%@ page import="com.bean.Product" %>
-<%@ page import="com.dao.ProductDao" %>  
+<%@ page import="com.dao.WishlistDao" %>    
+<%@ page import="com.dao.ProductDao" %>    
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -16,9 +18,8 @@
     <link href="css/prettyPhoto.css" rel="stylesheet">
   </head>
   <body>
-  
 	<!-- header -->
-	 <div id="wrapper" class="homepage-1">
+        <div id="wrapper" class="homepage-1">
           <div id="content"> <!-- Content -->
               <div class="newest">
                   <div class="container">
@@ -33,8 +34,11 @@
                                   %>
                                       <div class="row clearfix">
                                       <%
-                                      	List<Product> list= ProductDao.getProductBySeller(u.getUid());
-                                      	for(Product p: list){
+                                      	List<Wishlist> list= WishlistDao.getWishlistByUser(u.getUid());
+                                        if(list.size() > 0){
+                                      	for(Wishlist w: list)
+                                      	{
+                                      		Product p = ProductDao.getProduct(w.getPid());
                                       %>
                                           <div class="col-md-3 prdct-grid">
                                               <div class="product-fade">
@@ -43,7 +47,7 @@
 														<div class="product-fade-ct">
                                                             <div class="product-fade-control">
                                                                 <div class="clearfix"></div>
-                                                                <a href="seller-product-details.jsp?pid=<%=p.getPid() %>" class="btn btn-to-cart"><span class="bag"></span><span>Details</span><div class="clearfix"></div></a>
+                                                                <a href="product-details.jsp?pid=<%=p.getPid() %>" class="btn btn-to-cart"><span class="bag"></span><span>Details</span><div class="clearfix"></div></a>
                                                             </div>
                                                             
 														</div>
@@ -57,7 +61,15 @@
                                                   <%=p.getProduct_price()%>
                                               </div>
                                           </div>
-                                              <%}%>
+                                              <%}
+                                       		   }
+                                        	   else{
+                                        		   
+                                              %>
+												<h2>No Products In Wishlist</h2>                                              
+                                              <%
+                                        	   }
+                                              %>
                                       </div>
                                   </div>
                           </div>
@@ -65,8 +77,8 @@
                   </div>
               </div>
            </div>
-        </div>
-              
+        </div><!-- Content -->
+          
           <div id="footer"><!-- Footer -->
               <div class="footer-widget">
                   <div class="container">
@@ -149,7 +161,7 @@
                       <p>Copyright 2018. Designed and Developed by <a href="https://bootstrapmart.com/">BootstrapMart </a> &amp; Distributed by <a href="https://themewagon.com/">ThemeWagon</a></p>
                   </div>
               </div>
-          </div> <!-- Footer -->
+          </div><!-- Footer -->
       </div> <!-- wrapper -->
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
