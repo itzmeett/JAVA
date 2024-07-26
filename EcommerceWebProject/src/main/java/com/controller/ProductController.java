@@ -34,6 +34,11 @@ public class ProductController extends HttpServlet {
 		return "";
 	}
 	
+	//
+		 
+	
+	//
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String action = request.getParameter("action");
@@ -88,8 +93,4 @@ public class ProductController extends HttpServlet {
 		}
 	}
 	
-	{
-		
-	}
-
 }

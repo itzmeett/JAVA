@@ -102,7 +102,7 @@
                                               <a href="#" id="open-srch-form"><img src="images/srch.png" alt="srch"></a>
                                           </li>
                                           <li><a href="wishlist.jsp"><img src="images/pav.png" alt="pav"><span><%=session.getAttribute("wishlist_count") %></span></a></li>
-                                          <li><a href="#"><img src="images/bag.png" alt="bag"><span>2</span></a></li>
+                                          <li><a href="cart.jsp"><img src="images/bag.png" alt="bag"><span><%=session.getAttribute("cart_count") %></span></a></li>
                                           <li id="open-srch-form-mod">
                                               <div>
                                                   <form class="side-search">

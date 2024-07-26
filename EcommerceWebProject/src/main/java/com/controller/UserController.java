@@ -3,8 +3,10 @@ package com.controller;
 import java.io.IOException;
 import java.util.List;
 
+import com.bean.Cart;
 import com.bean.User;
 import com.bean.Wishlist;
+import com.dao.CartDao;
 import com.dao.UserDao;
 import com.dao.WishlistDao;
 
@@ -56,10 +58,11 @@ public class UserController extends HttpServlet {
                 String inputPassword = request.getParameter("password");
 					if(userPassword != null && userPassword.equals(inputPassword)) {
 						List<Wishlist> list = WishlistDao.getWishlistByUser(u.getUid());
-						
+						List<Cart> list1 = CartDao.getCartByUser(u.getUid());
 						HttpSession session = request.getSession();
 						session.setAttribute("u", u);
 						session.setAttribute("wishlist_count", list.size());
+						session.setAttribute("cart_count", list1.size());
 						if(u.getUsertype().equals("buyer"))
 						{
 							request.getRequestDispatcher("index.jsp").forward(request, response);

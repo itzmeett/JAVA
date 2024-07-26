@@ -2,10 +2,10 @@
     pageEncoding="UTF-8"%>
 <%@ include file="header.jsp" %>  
 <%@ page import="java.util.List" %>
+<%@ page import="com.bean.Cart" %>
 <%@ page import="com.bean.Product" %>
-<%@ page import="com.dao.ProductDao" %>  
-<%@ page import="com.dao.WishlistDao" %>  
-<%@ page import="com.dao.CartDao" %>  
+<%@ page import="com.dao.CartDao" %>    
+<%@ page import="com.dao.ProductDao" %>    
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -18,8 +18,8 @@
     <link href="css/prettyPhoto.css" rel="stylesheet">
   </head>
   <body>
-  
 	<!-- header -->
+        <div id="wrapper" class="homepage-1">
           <div id="content"> <!-- Content -->
               <div class="newest">
                   <div class="container">
@@ -27,9 +27,18 @@
                           <div class="newest-tab">
                               <div id="myTabContent" class="tab-content">
                                   <div role="tabpanel" class="tab-pane fade in active" id="1" aria-labelledby="cat-1">
+                                  <%
+                                  	if(request.getAttribute("msg")!=null){
+                                  		out.print(request.getAttribute("msg"));
+                                  	}
+                                  %>
                                       <div class="row clearfix">
                                       <%
-                                      	Product p = ProductDao.getProduct(Integer.parseInt(request.getParameter("pid")));
+                                      	List<Cart> list= CartDao.getCartByUser(u.getUid());
+                                        if(list.size() > 0){
+                                      	for(Cart c: list)
+                                      	{
+                                      		Product p = ProductDao.getProduct(c.getPid());
                                       %>
                                           <div class="col-md-3 prdct-grid">
                                               <div class="product-fade">
@@ -38,59 +47,9 @@
 														<div class="product-fade-ct">
                                                             <div class="product-fade-control">
                                                                 <div class="clearfix"></div>
-                                                                <%
-                                                                	if(u!=null)
-                                                                	{
-                                                                %>
-                                                                
-                                                                <%
-                                                                	
-                                                                	boolean flag1 = CartDao.checkCart(u.getUid(), p.getPid());
-                                                                	if(flag1==false){
-                                                                	
-                                                                %>
-                                                                
-                                                                <a href="add-to-cart.jsp?pid=<%=p.getPid()%>&uid=<%=u.getUid() %>" class="btn btn-to-cart"><span>Add to Cart</span><div class="clearfix"></div></a>
-                                                                
-                                                                <%
-                                                                	}
-                                                                	else
-                                                                	{
-                                                                %>
-                                                                <a href="remove-from-cart.jsp?pid=<%=p.getPid()%>&uid=<%=u.getUid() %>" class="btn btn-to-cart"><span>Remove from Cart</span><div class="clearfix"></div></a>
-                                                                <%
-                                                                	}
-                                                                %>
-                                                                
-                                                                <%
-                                                                	
-                                                                	boolean flag = WishlistDao.checkWishlist(u.getUid(), p.getPid());
-                                                                	if(flag==false){
-                                                                	
-                                                                %>
-                                                                
-                                                                <a href="add-to-wishlist.jsp?pid=<%=p.getPid()%>&uid=<%=u.getUid() %>" class="btn btn-to-cart"><span>Add to Wishlist</span><div class="clearfix"></div></a>
-                                                                
-                                                                <%
-                                                                	}
-                                                                	else
-                                                                	{
-                                                                %>
-                                                                <a href="remove-from-wishlist.jsp?pid=<%=p.getPid()%>&uid=<%=u.getUid() %>" class="btn btn-to-cart"><span>Remove from Wishlist</span><div class="clearfix"></div></a>
-                                                                <%
-                                                                	}
-                                                                %>
-                                                                <%
-                                                                	}
-                                                                	else
-                                                                	{
-                                                                		
-                                                                %>
-                                                                <a href="login.jsp" class="btn btn-to-cart"><span>Login</span><div class="clearfix"></div></a>
-                                                                <%
-                                                                	}
-                                                                %>
+                                                                <a href="product-details.jsp?pid=<%=p.getPid() %>" class="btn btn-to-cart"><span class="bag"></span><span>Details</span><div class="clearfix"></div></a>
                                                             </div>
+                                                            
 														</div>
 													</div>
                                               </div>
@@ -101,17 +60,25 @@
                                               <div class="product-price">
                                                   <%=p.getProduct_price()%>
                                               </div>
-                                              <div class="product-price">
-                                                  <%=p.getProduct_desc()%>
-                                              </div>
                                           </div>
+                                              <%}
+                                       		   }
+                                        	   else{
+                                        		   
+                                              %>
+												<h2>No Products In Cart</h2>                                              
+                                              <%
+                                        	   }
+                                              %>
                                       </div>
                                   </div>
                           </div>
                       </div>
                   </div>
               </div>
-              
+           </div>
+        </div><!-- Content -->
+          
           <div id="footer"><!-- Footer -->
               <div class="footer-widget">
                   <div class="container">
