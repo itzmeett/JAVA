@@ -72,6 +72,35 @@ public class CartDao {
 		return list;
 	}
 	
+	public static Cart getCart(int cid)
+	{
+		Cart c = null;
+		try {
+			Connection conn = DButil.createConnection();
+			String sql = "select * from webcart where cid = ?";
+			PreparedStatement pst = conn.prepareStatement(sql);
+			pst.setInt(1, cid);
+			ResultSet rs = pst.executeQuery();
+			while(rs.next())
+			{
+				c = new Cart();
+				c.setCid(rs.getInt("cid"));
+				c.setUid(rs.getInt("uid"));
+				c.setPid(rs.getInt("pid"));
+				c.setProduct_price(rs.getInt("product_price"));
+				c.setProduct_qty(rs.getInt("product_qty"));
+				c.setTotal_price(rs.getInt("total_price"));
+				c.setPayment_status(rs.getBoolean("payment_status"));
+				
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return c;
+	}
+
+	
 
 public static boolean checkCart(int uid, int pid)
 {
@@ -91,5 +120,20 @@ public static boolean checkCart(int uid, int pid)
 		e.printStackTrace();
 	}
 	return flag;
+}
+
+public static void updateCart(Cart c)
+{
+	try {
+		Connection conn = DButil.createConnection();
+		String sql = "update webcart set product_qty=?, total_price=? where cid = ?";
+		PreparedStatement pst = conn.prepareStatement(sql);
+		pst.setInt(1, c.getProduct_qty());
+		pst.setInt(2, c.getTotal_price());
+		pst.setInt(3, c.getCid());
+		pst.executeUpdate();
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
 }
 }

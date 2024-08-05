@@ -34,10 +34,12 @@
                                   %>
                                       <div class="row clearfix">
                                       <%
+                                      	int net_price= 0;
                                       	List<Cart> list= CartDao.getCartByUser(u.getUid());
                                         if(list.size() > 0){
                                       	for(Cart c: list)
                                       	{
+                                      		net_price += c.getTotal_price();
                                       		Product p = ProductDao.getProduct(c.getPid());
                                       %>
                                           <div class="col-md-3 prdct-grid">
@@ -60,6 +62,16 @@
                                               <div class="product-price">
                                                   <%=p.getProduct_price()%>
                                               </div>
+                                              <div class="product-price">
+                                                  <form name="change_qty" method="post" action="change_qty.jsp"> 
+                                                  	<input type="hidden" name="cid" value="<%=c.getCid()%>">
+                                                  	Quantity : <input type="number" name="product_qty" value="<%=c.getProduct_qty()%>" min="1" max="10" onchange="this.form.submit()"> 
+                                                  </form>
+                                                  <%=p.getProduct_price()%>
+                                              </div>
+                                              <div class="product-price">
+                                                  Total Price : <a href=""><%=c.getTotal_price()%></a>
+                                              </div>
                                           </div>
                                               <%}
                                        		   }
@@ -78,6 +90,7 @@
               </div>
            </div>
         </div><!-- Content -->
+          <h3>Net Price : <%=net_price %></h3>
           
           <div id="footer"><!-- Footer -->
               <div class="footer-widget">

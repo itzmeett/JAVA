@@ -71,8 +71,8 @@
                                       <label for="cf_subject">User Type*</label>
                                   	  <select name="usertype" class="form-control">
                                   	  	<option>---Select User Type---</option>
-                                  	  	<option>Buyer</option>
-                                  	  	<option>Seller</option>
+                                  	  	<option value="buyer">Buyer</option>
+                                  	  	<option value="seller">Seller</option>
                                   	  </select>
                                   </div>
                                   
