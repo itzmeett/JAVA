@@ -4,6 +4,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="com.bean.Wishlist" %>
 <%@ page import="com.bean.Product" %>
+<%@ page import="com.bean.User" %>
 <%@ page import="com.dao.WishlistDao" %>    
 <%@ page import="com.dao.ProductDao" %>    
 <!DOCTYPE html>
